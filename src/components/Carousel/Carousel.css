@@ -1,0 +1,9 @@
+/* Custom CSS for Flowbite Carousel Pagination */
+.carousel-indicators button {
+    background-color: rgba(0, 0, 0, 0.3); 
+  }
+  
+  .carousel-indicators button[aria-current="true"] {
+    background-color: #22c55e; 
+  }
+  

@@ -3,7 +3,7 @@ import "./navbar.style.css";
 
 const Navbar = () => {
   return (
-    <div className="navbar sticky  bg-black">
+    <div className="navbar fixed z-50  bg-black">
       <div className="navbar-start lg:px-60">
         <div className="dropdown">
           <div
