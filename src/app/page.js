@@ -13,7 +13,6 @@ export default function Home() {
       <Carouselcomponent />
       <Testimonials />
 
-      <Footer />
     </div>
   );
 }
