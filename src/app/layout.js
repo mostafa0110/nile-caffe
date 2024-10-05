@@ -1,6 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
+import "flowbite/dist/flowbite.min.css";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -25,6 +27,9 @@ export default function RootLayout({ children }) {
       >
         <Navbar />
         <main> {children}</main>
+
+        <Footer />
+        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
       </body>
     </html>
   );
