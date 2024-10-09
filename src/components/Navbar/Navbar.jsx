@@ -48,13 +48,18 @@ const Navbar = () => {
               <Link href="/Order">Order</Link>
             </li>
             <li>
-              <Link href="Reservations">Reservations</Link>
+              <Link href="/Reservations">Reservations</Link>
             </li>
             <li>
-              <Link href="About-Us">About Us</Link>
+              <Link href="/About-Us">About Us</Link>
             </li>
             <li>
-              <Link href="Contact-Us">Contact Us</Link>
+              <Link href="/Contact-Us">Contact Us</Link>
+            </li>
+            <li>
+              <Link href="/Login" className="btn btn-success ">
+                Login
+              </Link>
             </li>
           </ul>
         </div>
@@ -90,13 +95,18 @@ const Navbar = () => {
             <Link href="/Order">Order</Link>
           </li>
           <li className="hover:text-green-500">
-            <Link href="Reservations">Reservations</Link>
+            <Link href="/Reservations">Reservations</Link>
           </li>
           <li className="hover:text-green-500">
-            <Link href="About-Us">About Us</Link>
+            <Link href="/About-Us">About Us</Link>
           </li>
           <li className="hover:text-green-500">
-            <Link href="Contact-Us">Contact Us</Link>
+            <Link href="/Contact-Us">Contact Us</Link>
+          </li>
+          <li>
+            <Link href="/Login" className="btn btn-success">
+              Login
+            </Link>
           </li>
         </ul>
       </div>

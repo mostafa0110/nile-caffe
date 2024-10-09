@@ -2,8 +2,10 @@ import React from "react";
 import ContactUs from "@/components/contact us/contactus";
 const ContactPage = () => {
   return (
-    <div className="container-fluid pt-32">
-      <ContactUs />
+    <div>
+      <div className=" pt-32">
+        <ContactUs />
+      </div>
     </div>
   );
 };

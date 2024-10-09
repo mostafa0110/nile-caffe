@@ -1,0 +1,82 @@
+/* Dark background for the whole page */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a; /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Container for the create account form */
+  .create-account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Create Account Form Styling */
+  .create-account-form {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent form background */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); /* Slight shadow */
+    width: 320px;
+    text-align: center;
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+  }
+  
+  /* Title styling */
+  .form-title {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Input fields styling */
+  .input-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2); /* Transparent input background */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    color: #ffffff;
+    outline: none;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .input-group input::placeholder {
+    color: #ccc;
+  }
+  
+  .input-group input:focus {
+    background: rgba(255, 255, 255, 0.3); /* Slightly brighter on focus */
+    border-color: #00ff00; /* Green border on focus */
+  }
+  
+  /* Create Account button */
+  .create-account-button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #00b300, #00ff00); /* Green gradient button */
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  .create-account-button:hover {
+    background: linear-gradient(90deg, #009900, #00cc00); /* Darker green on hover */
+  }
+  
