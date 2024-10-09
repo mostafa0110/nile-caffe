@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         <main> {children}</main>
 
         <Footer />
-        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+        <script src="../path/to/flowbite/dist/flowbite.min.js" async></script>
       </body>
     </html>
   );
