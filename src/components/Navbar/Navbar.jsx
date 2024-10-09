@@ -1,6 +1,6 @@
 import React from "react";
 import "./navbar.style.css";
-
+import Link from "next/link";
 const Navbar = () => {
   return (
     <div className="navbar fixed z-50  bg-black">
@@ -31,10 +31,10 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-black text-white rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>Home</a>
+              <Link href="/">Home</Link>
             </li>
             <li>
-              <a>Menu</a>
+              <Link href="/Menu">Menu</Link>
               <ul className="p-2">
                 <li>
                   <a className="hover:bg-gray-800">Submenu 1</a>
@@ -45,16 +45,16 @@ const Navbar = () => {
               </ul>
             </li>
             <li>
-              <a>Order</a>
+              <Link href="/Order">Order</Link>
             </li>
             <li>
-              <a>Reservations</a>
+              <Link href="Reservations">Reservations</Link>
             </li>
             <li>
-              <a>About Us</a>
+              <Link href="About-Us">About Us</Link>
             </li>
             <li>
-              <a>Contact Us</a>
+              <Link href="Contact-Us">Contact Us</Link>
             </li>
           </ul>
         </div>
@@ -69,11 +69,13 @@ const Navbar = () => {
       <div className="navbar-end hidden lg:flex text-white font-bold">
         <ul className="menu menu-horizontal pr-11 ">
           <li className="hover:text-green-500">
-            <a>Home</a>
+            <Link href="/">Home</Link>
           </li>
           <li className="hover:text-green-500">
             <details>
-              <summary>Menu</summary>
+              <summary>
+                <Link href="/Menu">Menu</Link>
+              </summary>
               <ul className="p-2 bg-black text-white ">
                 <li className="hover:text-green-500">
                   <a className="hover:bg-gray-800">Submenu 1</a>
@@ -85,16 +87,16 @@ const Navbar = () => {
             </details>
           </li>
           <li className="hover:text-green-500">
-            <a>Order</a>
+            <Link href="/Order">Order</Link>
           </li>
           <li className="hover:text-green-500">
-            <a>Reservations</a>
+            <Link href="Reservations">Reservations</Link>
           </li>
           <li className="hover:text-green-500">
-            <a>About Us</a>
+            <Link href="About-Us">About Us</Link>
           </li>
           <li className="hover:text-green-500">
-            <a>Contact Us</a>
+            <Link href="Contact-Us">Contact Us</Link>
           </li>
         </ul>
       </div>
