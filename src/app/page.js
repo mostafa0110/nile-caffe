@@ -5,7 +5,6 @@ import Testimonials from "@/components/Testimonials/Testimonials";
 
 import Image from "next/image";
 import Carouselcomponent from "@/components/Carousel/Carousel.component";
-import ContactUs from "@/components/contact us/contactus";
 
 export default function Home() {
   return (
@@ -13,8 +12,6 @@ export default function Home() {
       <Hero />
       <Carouselcomponent />
       <Testimonials />
-      <ContactUs></ContactUs>
-
     </div>
   );
 }
