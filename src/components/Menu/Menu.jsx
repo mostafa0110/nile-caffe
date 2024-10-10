@@ -2,7 +2,7 @@
 
 const Menu = () => {
     return (
-        <div className="bg-gradient-to-b from-zinc-950 via-zinc-900  to-zinc-800 text-white py-11 px-44 w-5/6 mx-auto flex flex-col items-center ">
+        <div className="bg-gradient-to-b from-zinc-950 via-zinc-900  to-zinc-800  text-white py-11 px-44 w-5/6 mx-auto flex flex-col items-center ">
         <h2 className="text-green-500 text-3xl font-bold text-center ">
             OUR MENU FOR TODAY
         </h2>
