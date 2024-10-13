@@ -15,18 +15,18 @@ const AboutUs = () => {
             specifically for restaurants and cafés. We understand the fast-paced
             nature of the food and beverage industry and have crafted a system
             that simplifies operations, optimizes workflow, and enhances
-            customer experiences. Whether you're managing a cozy coffee shop or
-            a bustling restaurant, Nile Café streamlines everything from table
-            reservations, order processing, and inventory management to staff
-            scheduling and financial reporting. Our user-friendly interface and
-            powerful features ensure that your business runs smoothly, allowing
-            you to focus on what matters most—delivering exceptional service to
-            your customers. At Nile Café, we are not just a software provider;
-            we are passionate about helping food businesses thrive. With
-            real-time insights, automation tools, and top-notch support, we
-            empower you to operate efficiently and grow with confidence. Join
-            us, and let Nile Café take your restaurant or café to the next
-            level!
+            customer experiences. Whether you&apos;re managing a cozy coffee
+            shop or a bustling restaurant, Nile Café streamlines everything from
+            table reservations, order processing, and inventory management to
+            staff scheduling and financial reporting. Our user-friendly
+            interface and powerful features ensure that your business runs
+            smoothly, allowing you to focus on what matters
+            most&mdash;delivering exceptional service to your customers. At Nile
+            Café, we are not just a software provider; we are passionate about
+            helping food businesses thrive. With real-time insights, automation
+            tools, and top-notch support, we empower you to operate efficiently
+            and grow with confidence. Join us, and let Nile Café take your
+            restaurant or café to the next level!
           </p>
         </div>
         <div className="text-white md:p-8 p-6 ">
