@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 // Load environment variables from .env file
 dotenv.config();
 // Parse the Firebase service account key from the environment variable
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
 
 if (!serviceAccount) {
   throw new Error(
