@@ -1,23 +1,35 @@
 import React from "react";
-
+import Link from "next/link";
 const Footer = () => {
   return (
     <div className="footer footer-center bg-black text-white rounded p-10">
       <img src="/assets/images/nile_cafe_logo.png" className="h-36 w-36" />
 
       <nav className="grid grid-flow-col gap-4">
-        <a className="no-underline hover:text-green-500 cursor-pointer">
+        <Link
+          href="/About-Us"
+          className="no-underline hover:text-green-500 cursor-pointer"
+        >
           About us
-        </a>
-        <a className="no-underline hover:text-green-500 cursor-pointer">
+        </Link>
+        <Link
+          href="Contact-Us"
+          className="no-underline hover:text-green-500 cursor-pointer"
+        >
           Contact Us
-        </a>
-        <a className="no-underline hover:text-green-500 cursor-pointer">
+        </Link>
+        <Link
+          href="/Privacy"
+          className="no-underline hover:text-green-500 cursor-pointer"
+        >
           Privacy & Policy
-        </a>
-        <a className="no-underline hover:text-green-500 cursor-pointer">
+        </Link>
+        <Link
+          href="/Terms"
+          className="no-underline hover:text-green-500 cursor-pointer"
+        >
           Terms & Conditions
-        </a>
+        </Link>
       </nav>
       <nav>
         <div className="grid grid-flow-col gap-4 ">
