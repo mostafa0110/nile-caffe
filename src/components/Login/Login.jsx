@@ -1,6 +1,7 @@
 "use client"; // Add this to ensure it's a client component
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; // Import useRouter
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from "../../lib/firebase"; // Firebase initialization
 
@@ -11,6 +12,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+
+  const router = useRouter(); // Initialize useRouter
 
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevents form from submitting
@@ -39,12 +42,24 @@ const Login = () => {
       if (response.ok) {
         setSuccess("User Login success!"); // Success message
         setError(null);
+
+        // Redirect to homepage after login
+        router.push("/"); // Redirects the user to the home page
       } else {
         setError(data.message || "Something went wrong.");
       }
     } catch (error) {
       console.error(error);
-      setError(error.message);
+
+      // Improved error handling
+      if (error.code === "auth/user-not-found") {
+        setError("No account found with this email. Please register.");
+      } else if (error.code === "auth/wrong-password") {
+        setError("Incorrect password. Please try again.");
+      } else {
+        setError(error.message); // Other errors
+      }
+
       setSuccess(null);
     }
   };
@@ -63,6 +78,7 @@ const Login = () => {
               className="h-6 w-6 shrink-0 stroke-current"
               fill="none"
               viewBox="0 0 24 24"
+              stroke="currentColor"
             >
               <path
                 strokeLinecap="round"
@@ -125,7 +141,10 @@ const Login = () => {
           </button>
         </form>
         <div className="mt-4 text-center">
-          <Link href="/forgot-password" className="text-sm text-green-500 hover:underline">
+          <Link
+            href="/forgot-password"
+            className="text-sm text-green-500 hover:underline"
+          >
             Forgot Password?
           </Link>
         </div>

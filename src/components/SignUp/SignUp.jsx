@@ -1,6 +1,7 @@
 "use client"; // Add this to ensure it's a client component
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; // Import useRouter
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -16,6 +17,12 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null); // State for success messages
+  const router = useRouter(); // Initialize useRouter
+  const [isMounted, setIsMounted] = useState(false); // State to track component mounting
+
+  useEffect(() => {
+    setIsMounted(true); // Set to true after component mounts
+  }, []);
 
   const handleSignUp = async (event) => {
     event.preventDefault(); // Prevent default form submission
@@ -26,7 +33,7 @@ const SignUp = () => {
     }
 
     try {
-      // Create user with email and password
+      // Create user with email and password without logging in
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -34,12 +41,13 @@ const SignUp = () => {
       );
       const user = userCredential.user;
 
-      // Update Firebase profile with the name
+      // Update Firebase profile with the name (optional)
       await updateProfile(user, { displayName: name });
 
-      const idToken = await user.getIdToken(); // Get Firebase ID token
+      // Get the ID token for the newly created user
+      const idToken = await user.getIdToken();
 
-      // Send ID token and name to server to save user to MongoDB
+      // Send user data to your backend
       const response = await fetch("/api/storeUser", {
         method: "POST",
         headers: {
@@ -48,21 +56,27 @@ const SignUp = () => {
         body: JSON.stringify({
           idToken,
           name,
-          email,
-          password,
-          isLogin: false,
-        }), // Send name along with the token
+          isLogin: false, // Set to false for sign-up
+        }),
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to store user in MongoDB");
+      // Check if the response was successful
+      if (response.ok) {
+        setSuccess("Account created successfully! Please login.");
+        setError(null); // Clear any previous errors
+      } else {
+        const errorData = await response.json();
+        setError(errorData.message || "Failed to store user data");
+        setSuccess(null); // Clear any previous success messages
       }
 
-      console.log("MongoDB Response:", data.message);
-      setSuccess("User signed up successfully!"); // Success message
-      setError(null); // Clear any previous errors
+      // Log the user out immediately after creating the account
+      await auth.signOut();
+
+      // Redirect to login page after successful signup
+      if (isMounted) {
+        router.push("/Login"); // Navigate to the login page
+      }
     } catch (error) {
       console.error("Error during sign-up:", error);
       setError(error.message);
@@ -93,7 +107,7 @@ const SignUp = () => {
             </svg>
             <span>{error}</span>
           </div>
-        )}{" "}
+        )}
         {/* Display error message */}
         {success && (
           <div role="alert" className="alert alert-success">
@@ -112,7 +126,7 @@ const SignUp = () => {
             </svg>
             <span>{success}</span>
           </div>
-        )}{" "}
+        )}
         {/* Display success message */}
         <form onSubmit={handleSignUp} className="space-y-4">
           <div className="relative">

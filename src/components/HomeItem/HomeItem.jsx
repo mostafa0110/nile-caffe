@@ -1,8 +1,6 @@
-import Menu from "@/components/Menu/Menu";
-import ItemCard from "@/components/ItemCard/ItemCard";
-
-const MenuPage = () => {
-  // Data for test only to be removed later
+import React from "react";
+import ItemCard from "../ItemCard/ItemCard";
+const HomeItem = () => {
   const items = [
     {
       imageUrl:
@@ -47,11 +45,9 @@ const MenuPage = () => {
       price: "80",
     },
   ];
-  // ****************************************
   return (
-    <div className="bg-zinc-900 text-white  p-28 pt-40  flex flex-col   items-center">
-      <Menu />
-      <div className=" mx-auto mt-10 px-4 py-8">
+    <div>
+      <div className=" mx-auto  px-4 py-8 bg-zinc-900">
         <h1 className="text-3xl font-bold text-center text-white mb-4">
           Deserts
         </h1>
@@ -72,4 +68,4 @@ const MenuPage = () => {
   );
 };
 
-export default MenuPage;
+export default HomeItem;

@@ -1,3 +1,5 @@
+// lib/mongoose.js
+
 import mongoose from "mongoose";
 
 const DATABASE_URL = process.env.DATABASE_URL;
@@ -22,9 +24,15 @@ async function connectDB() {
       bufferCommands: false,
     };
 
-    cached.promise = mongoose.connect(DATABASE_URL, opts).then((mongoose) => {
-      return mongoose;
-    });
+    cached.promise = mongoose.connect(DATABASE_URL, opts)
+      .then((mongoose) => {
+        console.log("MongoDB connected successfully"); // Debug log
+        return mongoose;
+      })
+      .catch((error) => {
+        console.error("MongoDB connection error:", error); // Log connection error
+        throw error; // Rethrow the error
+      });
   }
   cached.conn = await cached.promise;
   return cached.conn;

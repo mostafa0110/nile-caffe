@@ -3,9 +3,10 @@ import React from "react";
 const AboutUs = () => {
   return (
     <div className="h-full w-full  bg-zinc-900 flex flex-col">
-      <h1 className="text-center pt-40 font-extrabold text-6xl text-white">
-        About-Us
-      </h1>
+      <div className="text-center mb-8 pt-40">
+        <p className="text-2xl text-green-500 mb-4">About Us</p>
+        <div className="h-0.5 w-10 bg-green-500 mx-auto"></div>
+      </div>
       <div className="md:pt-20 flex md:flex-row flex-col justify-evenly">
         <div className="text-white md:p-8 p-6 ">
           <h2 className=" font-extrabold text-2xl">About Nile Café</h2>

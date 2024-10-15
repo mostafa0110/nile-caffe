@@ -26,11 +26,13 @@ export async function POST(req) {
           { status: 404 }
         );
       }
+      // If user exists, return success message
       return new Response(
         JSON.stringify({ message: "User logged in successfully" }),
         { status: 200 }
       );
     } else {
+      // Handle sign-up logic
       if (existingUser) {
         return new Response(
           JSON.stringify({ message: "User already exists" }),
