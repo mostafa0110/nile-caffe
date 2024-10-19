@@ -1,9 +1,39 @@
-import React from "react";
-import "./navbar.style.css";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import firebaseApp from "../../lib/firebase"; // Firebase setup
+
+const auth = getAuth(firebaseApp);
+
 const Navbar = () => {
+  const [user, setUser] = useState(null); // State to hold the logged-in user
+  const [isHovered, setIsHovered] = useState(false); // State to track hover effect
+
+  // Listen for changes in the authentication state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser({ name: currentUser.displayName || "User" }); // Set the user state
+      } else {
+        setUser(null); // No user is signed in
+      }
+    });
+
+    return () => unsubscribe(); // Cleanup subscription on unmount
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth); // Sign out the user
+      setUser(null); // Reset user state after logout
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
+
   return (
-    <div className="navbar fixed z-50  bg-black">
+    <div className="navbar fixed z-50 bg-black">
       <div className="navbar-start lg:px-60">
         <div className="dropdown">
           <div
@@ -28,38 +58,41 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-black text-white rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content items-center bg-black text-white rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
               <Link href="/">Home</Link>
             </li>
             <li>
               <Link href="/Menu">Menu</Link>
-              <ul className="p-2">
-                <li>
-                  <a className="hover:bg-gray-800">Submenu 1</a>
-                </li>
-                <li>
-                  <a className="hover:bg-gray-800">Submenu 2</a>
-                </li>
-              </ul>
             </li>
             <li>
-              <Link href="/Order">Order</Link>
+              <Link href="/OrderPage">Order</Link>
             </li>
-            <li>
-              <Link href="/Reservations">Reservations</Link>
-            </li>
+
             <li>
               <Link href="/About-Us">About Us</Link>
             </li>
             <li>
               <Link href="/Contact-Us">Contact Us</Link>
             </li>
-            <li>
-              <Link href="/Login" className="btn btn-success ">
-                Login
-              </Link>
+            <li className="flex items-center space-x-2">
+              {user ? (
+                <button
+                  onMouseEnter={() => setIsHovered(true)} // Set hover state
+                  onMouseLeave={() => setIsHovered(false)} // Reset hover state
+                  onClick={handleLogout} // Logout when clicked
+                  className={`text-white font-bold   ${
+                    isHovered ? "btn btn-error" : "btn btn-outline btn-success"
+                  }`}
+                >
+                  {isHovered ? "Logout" : `Welcome, ${user.name}!`}
+                </button>
+              ) : (
+                <Link href="/Login" className="btn btn-success">
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>
@@ -77,36 +110,35 @@ const Navbar = () => {
             <Link href="/">Home</Link>
           </li>
           <li className="hover:text-green-500">
-            <details>
-              <summary>
-                <Link href="/Menu">Menu</Link>
-              </summary>
-              <ul className="p-2 bg-black text-white ">
-                <li className="hover:text-green-500">
-                  <a className="hover:bg-gray-800">Submenu 1</a>
-                </li>
-                <li className="hover:text-green-500">
-                  <a className="hover:bg-gray-800">Submenu 2</a>
-                </li>
-              </ul>
-            </details>
+            <Link href="/Menu">Menu</Link>
           </li>
           <li className="hover:text-green-500">
-            <Link href="/Order">Order</Link>
+            <Link href="/OrderPage">Order</Link>
           </li>
-          <li className="hover:text-green-500">
-            <Link href="/Reservations">Reservations</Link>
-          </li>
+
           <li className="hover:text-green-500">
             <Link href="/About-Us">About Us</Link>
           </li>
           <li className="hover:text-green-500">
             <Link href="/Contact-Us">Contact Us</Link>
           </li>
-          <li>
-            <Link href="/Login" className="btn btn-success">
-              Login
-            </Link>
+          <li className="flex items-center space-x-2">
+            {user ? (
+              <button
+                onMouseEnter={() => setIsHovered(true)} // Set hover state
+                onMouseLeave={() => setIsHovered(false)} // Reset hover state
+                onClick={handleLogout} // Logout when clicked
+                className={`text-white font-bold   ${
+                  isHovered ? "btn btn-error" : "btn btn-outline btn-success"
+                }`}
+              >
+                {isHovered ? "Logout" : `Welcome, ${user.name}!`}
+              </button>
+            ) : (
+              <Link href="/Login" className="btn btn-success">
+                Login
+              </Link>
+            )}
           </li>
         </ul>
       </div>
